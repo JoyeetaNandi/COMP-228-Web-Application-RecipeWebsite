@@ -1,0 +1,42 @@
+﻿
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/css/style.css" rel="stylesheet" />
+        @*<link href="~/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />*@
+    <link rel="stylesheet"
+          asp-href-include="/lib/bootstrap/**/*.min.css"
+          asp-href-exclude="**/*-reboot*,**/*-grid*" />
+
+</head>
+<body style="position:center;">
+    
+    <div class="text-center">
+        <div id="header">
+            <img src="~/Images/Banner.png" />
+        </div>            
+            <br />
+            <div class="row m-1 p-1">
+                <a class="btn btn-primary" asp-controller="Home" asp-action="Index">Home</a>
+                <a class="btn btn-primary" asp-controller="Home" asp-action="RecipeList">Recipe List</a>
+                <a class="btn btn-primary" asp-controller="CRUD" asp-action="AddRecipe">Add Recipe</a>
+                @if (!User.Identity.IsAuthenticated)
+                {
+                    <a class="btn btn-primary" asp-controller="Account" asp-action="Login">Log In</a>
+                }
+                else {
+                    <a class="btn btn-primary" asp-controller="Account" asp-action="Logout">Log Out: @User.Identity.Name</a>
+                }
+            </div>
+            
+          <br />
+            <div class="col-9">
+                 @RenderBody()
+            </div>
+    </div>
+
+</body>
+</html>

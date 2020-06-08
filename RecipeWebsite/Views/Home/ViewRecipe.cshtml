@@ -1,0 +1,37 @@
+﻿@model Recipe
+
+@{
+    ViewBag.Title = "View Recipe";
+}
+<div class="card card-outline-primary m-1 p-1">
+    <h3>@Model.RecipeName Recipe</h3>
+    <div class="bg-faded p-1">
+        <h4>
+            by: @Model.UserName
+        </h4>
+        <h4><strong>Ingredients:</strong>  </h4>        
+        @Model.Ingredients
+    </div>
+    <div class="card-text p-1"> <strong>Steps:</strong> @Model.Process</div>
+    <table>
+        <tbody>
+            <tr>
+                @foreach (UploadImages img in Model.Images)
+                {
+                    <td>
+                        <img src="data:image/jpeg;base64,@Convert.ToBase64String(img.Image)" style="width:400px" />
+                      </td>
+                }
+            </tr>
+        </tbody>
+    </table>
+</div>
+<br />
+<div>
+    <p>Click <a class="nav-link" asp-controller="Home" asp-action="ReviewRecipe" asp-route-recipeName="@Model.RecipeName">here</a> to Review this recipe.</p>
+</div>
+<div>
+    <p>Click <a class="nav-link" asp-controller="Home" asp-action="RecipeList">here</a> to choose another recipe.</p>
+</div>
+
+

@@ -1,0 +1,12 @@
+﻿@model UploadImages
+
+<form method="post" enctype="multipart/form-data" asp-action="Picture">
+
+    <input type="hidden" asp-for="RecipeId" />
+    <label asp-for="Image"></label>
+
+    <input type="file" asp-for="Image" />
+    <button type="submit">Submit</button>
+    
+
+</form>
